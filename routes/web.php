@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\ItemController;
@@ -18,3 +19,5 @@ use App\Http\Controllers\ItemController;
 Route::get('/', [SiteController::class,'home']);
 
 Route::get('/items', [ItemController::class, 'index']);
+
+Route::get('/employees', [EmployeeController::class, 'index']);
