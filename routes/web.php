@@ -18,6 +18,12 @@ use App\Http\Controllers\ItemController;
 
 Route::get('/', [SiteController::class,'home']);
 
-Route::get('/items', [ItemController::class, 'index']);
+Route::group(['middleware'=>'auth'], function() {
+    Route::get('/items', [ItemController::class, 'index']);
+    Route::get('/employees', [EmployeeController::class, 'index']);
+});
 
-Route::get('/employees', [EmployeeController::class, 'index']);
+Route::get('/login', [SiteController::class, 'loginForm'])->name('login');
+Route::post('/login', [SiteController::class, 'login']);
+
+Route::get('/logout', [SiteController::class, 'logout']);
